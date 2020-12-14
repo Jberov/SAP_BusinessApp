@@ -1,14 +1,15 @@
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scan = new Scanner (System.in);
+        Database DB = new Database ();
+        DB.DBConnection ();
+        /*Scanner scan = new Scanner (System.in);
         Login Log = new Login ();
         Product product = new Product ();
         Administrator admin = new Administrator ();
         TradeRep trader = new TradeRep ();
         Sales sales = new Sales ();
-        admin.addTradeRep ();
+
         System.out.println ("Welcome to the beta business app.");
         System.out.println ("What are you:\n1.Admin\n2.TradeRep");
         byte role = scan.nextByte();
@@ -51,5 +52,6 @@ public class Main {
             Log.logout ();
         }
 
+    }*/
     }
 }

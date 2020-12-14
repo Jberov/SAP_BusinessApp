@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-
-public interface Operations {
+interface Operations {
     //TODO Revamp the interface, the names are confusing
     void add();
     void redact();

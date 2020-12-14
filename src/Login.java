@@ -1,6 +1,8 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Login{
+
+ class Login {
     Scanner scan = new Scanner (System.in);
     public String getUsername() {
         return username;
@@ -34,7 +36,11 @@ public class Login{
                 System.out.println ("Invalid username or password");
             }
         }catch (NullPointerException nptr){
-            System.out.println ("No such user");
+            System.out.println ("No such user" + nptr.getMessage ());
+        }catch(InputMismatchException ime){
+            System.out.println ("Enter valid letters");
+        }finally{
+            System.out.println ("Login successful");
         }
 
     }
@@ -49,6 +55,8 @@ public class Login{
             }
         }catch (NullPointerException npe){
             System.out.println ("No such user");
+        }catch (InputMismatchException ime){
+            System.out.println ("Enter your credentials, using thr approved characters");
         }
     }
     public void logout(){

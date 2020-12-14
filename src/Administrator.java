@@ -1,17 +1,17 @@
 import java.util.HashMap;
 import java.util.Scanner;
-
-public class Administrator extends User implements Operations{
+import java.sql.*;
+class Administrator extends User implements Operations{
     public Administrator(){
         super();
     }
-    Scanner scan = new Scanner(System.in);
+    Scanner scan = new Scanner (System.in);
     HashMap<String, TradeRep> TradeReps = new HashMap<> ();
     HashMap<String, Administrator> Administrators = new HashMap<> ();
     String username, password;
-    //TODO Save the information to a DB
+    long ID;
+    //TODO Save the information to a DB - in progress
     @Override
-    //Adds a new Admin
     public void add() {
         Administrator temp = new Administrator ();
         System.out.println("You wish to add a new administrator. Very well");
@@ -30,7 +30,6 @@ public class Administrator extends User implements Operations{
     }
 
     @Override
-    //Redacts an Admin
     public void redact() {
         System.out.println ("Enter the name of the trade representative you wish to redact");
         String Administrator = scan.nextLine ();
@@ -44,7 +43,7 @@ public class Administrator extends User implements Operations{
             switch (choice) {
                 case "username" -> {
                     System.out.println ("Enter new username of the trade representative:");
-                    temp.username = scan.nextLine ();
+                    temp.username = scan.nextLine  ();
                     Administrators.put (Administrator, temp);
                 }
                 case "password" -> {
@@ -96,7 +95,7 @@ public class Administrator extends User implements Operations{
     }
     public void redactTradeReps(){
         System.out.println ("Enter the name of the trade representative you wish to redact");
-        String TradeRep = scan.nextLine ();
+        String TradeRep = scan.nextLine();
         if(!TradeReps.containsKey (TradeRep)){
             System.out.println ("No such Trade representative");
             
@@ -117,7 +116,7 @@ public class Administrator extends User implements Operations{
                 }
                 case "name" -> {
                     System.out.println ("Enter new name of the trade representative:");
-                    temp.Name = scan.nextLine ();
+                    temp.Name = scan.nextLine();
                     TradeReps.put (TradeRep, temp);
                 }
                 default -> System.out.println ("No such command. Please enter a valid value to be changed");

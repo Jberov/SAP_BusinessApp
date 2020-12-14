@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Product implements Operations {
+class Product implements Operations {
     double price;
     String name;
     long ID = 0;

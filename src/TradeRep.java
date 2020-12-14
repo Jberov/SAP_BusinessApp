@@ -1,26 +1,26 @@
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TradeRep extends User implements Operations{
     String username, password;
+    long ID;
     HashMap<String, User> clients = new HashMap<> ();
-    HashMap<String, TradeRep> TradeReps = new HashMap<> ();
-    Scanner scan = new Scanner(System.in);
+    Scanner scan = new Scanner (System.in);
     @Override
-    //Adds a client
     public void add() {
         User tempClient = new User ();
 
         System.out.println("You wish to add a new client. Very well");
         System.out.println("Please enter the name of the client");
-        tempClient.Name = scan.nextLine().toLowerCase();
+        tempClient.Name = scan.nextLine ().toLowerCase();
         clients.put (Name, tempClient);
     }
 
     @Override
-    //Removes a client
     public void remove() {
         System.out.println("Enter the name of the client you wish to remove");
+        try{
         String name = scan.nextLine();
         if(!clients.containsKey (name)){
             System.out.println ("No such Trade representative");
@@ -34,10 +34,14 @@ public class TradeRep extends User implements Operations{
                 System.out.println ("Client has been successfully removed");
             }
         }
+    }catch(InputMismatchException ime){
+            System.out.println ("Enter a valid name with valid characters");
+        }finally {
+            System.out.println ("Client successfully removed");
+        }
     }
 
     @Override
-    //Redacts a client
     public void redact() {
         System.out.println("Enter the name of the client you wish to redact");
         try {
@@ -48,7 +52,7 @@ public class TradeRep extends User implements Operations{
             } else {
                 User temp = clients.get (User);
                 System.out.println ("Choose what to change");
-                String choice = scan.nextLine ().toLowerCase ();
+                String choice = scan.nextLine().toLowerCase ();
                 if ("name".equals (choice)) {
                     System.out.println ("Enter new name of the trade representative:");
                     temp.Name = scan.nextLine ();
@@ -58,7 +62,7 @@ public class TradeRep extends User implements Operations{
                 }
             }
         }catch(IndexOutOfBoundsException iobe){
-            System.out.println ("No such product found");
+            System.out.println ("No such product found" + iobe.getMessage ());
         }finally{
             System.out.println ("Client has been changed");
         }
