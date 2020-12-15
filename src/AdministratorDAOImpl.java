@@ -1,11 +1,16 @@
 import java.util.HashMap;
 
 public class AdministratorDAOImpl implements AdministratorDAOInterface{
-    HashMap<String, Administrator> Administrators;
+    HashMap<String, Administrator> Administrators= new HashMap<> ();
     public AdministratorDAOImpl(){
-        Administrators = new HashMap<> ();
         //TODO Perhaps add here an object for the specific Database DAO class
     }
+
+    @Override
+    public HashMap getHashMap() {
+        return Administrators;
+    }
+
     @Override
     public void addAdmin() {
 

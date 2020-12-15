@@ -2,13 +2,13 @@ import java.sql.*;
 
 
 class Database{
-    private static Statement statement;
+    //private static Statement statement;
     private static ResultSet result;
     /*Administrator admin = new Administrator ();
     TradeRep trader = new TradeRep ();
     User client;
     Product product;
-    Sales sale;*/
+    Sales sale;
     public void openDBConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -20,7 +20,7 @@ class Database{
         {
             System.out.println ("Drivers....");
         }
-    }
+    }*/
     private void loadAdmins(){
         try {
             result = statement.executeQuery ("select * from administrators");

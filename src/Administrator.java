@@ -1,19 +1,10 @@
 
-class Administrator extends User {
-    private String username, password;
-    private long ID;
+public class Administrator extends User {
+     private String username, password;
+     private long ID;
     public Administrator(){
 
     }
-
-    public Administrator(String username, String password, long ID) {
-        super();
-        this.username = username;
-        this.password = password;
-        this.ID = ID;
-    }
-
-
     //TODO Save the information to a DB - in progress
     /*
     public void addTradeRep(){
