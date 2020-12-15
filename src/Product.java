@@ -3,15 +3,14 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-class Product implements Operations {
+class Product {
     double price;
     String name;
     long ID = 0;
     HashMap<String, Product> products = new HashMap<> ();
     Scanner scan = new Scanner(System.in);
     //TODO Save the information to a DB
-    @Override
-    public void add() {
+    public void addProduct() {
 
         Product temp = new Product ();
         try {
@@ -26,8 +25,8 @@ class Product implements Operations {
         }
         products.put (temp.name, temp);
     }
-    @Override
-    public void redact() {
+
+    public void redactProduct() {
         System.out.println("Enter the name of the product you wish to redact");
         try {
             if(!products.containsKey (scan.nextLine ())){
@@ -58,9 +57,7 @@ class Product implements Operations {
             System.out.println ("Product successfully redacted");
         }
     }
-
-    @Override
-    public void remove() {
+    public void removeProduct() {
         System.out.println("Enter the name of the product you wish to remove");
         products.remove(scan.nextLine ());
     }

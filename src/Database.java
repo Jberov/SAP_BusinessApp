@@ -4,30 +4,16 @@ import java.sql.*;
 class Database{
     private static Statement statement;
     private static ResultSet result;
-    Administrator admin = new Administrator ();
+    /*Administrator admin = new Administrator ();
     TradeRep trader = new TradeRep ();
     User client;
     Product product;
-    Sales sale;
-
-
-public void loadInfo(){
-    loadAdmins ();
-    loadTradeReps ();
-    loadClients ();
-    loadProducts ();
-    loadSales ();
-
-}
-public void saveInfo(){
-
-}
-    public void DBConnection(){
+    Sales sale;*/
+    public void openDBConnection(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection ("jdbc:mysql://localhost/shopdatabase", "root", "");
             statement= conn.createStatement();
-            conn.close ();
         }catch(SQLException s){
             s.printStackTrace ();
         }catch (ClassNotFoundException cnfe)
@@ -43,7 +29,6 @@ public void saveInfo(){
                 admin.ID = result.getLong (1);
                 admin.username = result.getString (3);
                 admin.password = result.getString (4);
-                System.out.println ( admin.ID + "  " +  admin.Name + "  " + admin.username + " " + admin.password);
                 admin.Administrators.put ( admin.Name, admin);
             }
         }catch(SQLException sqle){
@@ -58,7 +43,6 @@ public void saveInfo(){
                 trader.ID = result.getLong (1);
                 trader.username = result.getString (3);
                 trader.password = result.getString (4);
-                System.out.println (trader.ID + "  " +  trader.Name + "  " + trader.username + " " + trader.password);
                 admin.TradeReps.put (trader.Name, trader);
             }
         }catch(SQLException sqle){
@@ -87,7 +71,6 @@ public void saveInfo(){
                 product.ID =  result.getLong (1);
                 product.name = result.getString (2);
                 product.price = result.getDouble ("Price");
-                System.out.println (product.ID + " " + product.name + " " + product.price);
                 product.products.put (product.name, product);
             }
         }catch(SQLException sqle){
@@ -103,8 +86,6 @@ public void saveInfo(){
                 sale.time_of_sale = result.getTimestamp (2);
                 sale.quantity = result.getInt ("Quantity");
                 sale.TotalPrice = result.getDouble (5);
-
-                System.out.println (sale.ID + " " + sale.time_of_sale + " " + sale.quantity + " " + sale.TotalPrice);
                sale.sales.add (sale);
             }
         }catch(SQLException sqle){

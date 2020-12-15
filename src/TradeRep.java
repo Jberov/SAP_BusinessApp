@@ -2,13 +2,12 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TradeRep extends User implements Operations{
+public class TradeRep extends User{
     String username, password;
     long ID;
     HashMap<String, User> clients = new HashMap<> ();
     Scanner scan = new Scanner (System.in);
-    @Override
-    public void add() {
+    public void addClient() {
         User tempClient = new User ();
 
         System.out.println("You wish to add a new client. Very well");
@@ -16,9 +15,7 @@ public class TradeRep extends User implements Operations{
         tempClient.Name = scan.nextLine ().toLowerCase();
         clients.put (Name, tempClient);
     }
-
-    @Override
-    public void remove() {
+    public void removeClient() {
         System.out.println("Enter the name of the client you wish to remove");
         try{
         String name = scan.nextLine();
@@ -41,8 +38,7 @@ public class TradeRep extends User implements Operations{
         }
     }
 
-    @Override
-    public void redact() {
+    public void redactClient() {
         System.out.println("Enter the name of the client you wish to redact");
         try {
             String User = scan.nextLine ();

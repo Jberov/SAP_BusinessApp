@@ -1,4 +1,4 @@
-public class RedactProduct implements Load {
+public class RedactProduct implements Command {
     private Product product;
     public RedactProduct(Product product){
         this.product = product;
@@ -6,6 +6,6 @@ public class RedactProduct implements Load {
 
     @Override
     public void execute() {
-        product.redact ();
+        product.redactProduct ();
     }
 }

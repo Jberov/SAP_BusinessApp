@@ -1,4 +1,4 @@
-public class DeleteProduct implements Load {
+public class DeleteProduct implements Command {
     private Product product;
     public DeleteProduct(Product product){
         this.product = product;
@@ -6,6 +6,6 @@ public class DeleteProduct implements Load {
 
     @Override
     public void execute() {
-        product.remove ();
+        product.removeProduct ();
     }
 }

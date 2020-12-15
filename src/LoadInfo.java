@@ -1,4 +1,4 @@
-public class LoadInfo implements Load{
+public class LoadInfo implements Command {
     private Database loader;
     public LoadInfo(Database loader){
         this.loader = loader;
