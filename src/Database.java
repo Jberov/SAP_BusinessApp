@@ -20,7 +20,7 @@ class Database{
         {
             System.out.println ("Drivers....");
         }
-    }*/
+    }
     private void loadAdmins(){
         try {
             result = statement.executeQuery ("select * from administrators");
@@ -34,7 +34,7 @@ class Database{
         }catch(SQLException sqle){
             sqle.printStackTrace ();
         }
-    }
+    }*/
     private void loadTradeReps(){
         try {
             result = statement.executeQuery ("select * from tradereps");

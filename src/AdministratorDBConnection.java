@@ -3,15 +3,15 @@ import java.sql.*;
 
 public class AdministratorDBConnection extends DBConnectionHandler{
     ResultSet result;
-    AdministratorDAOImpl admins;
+    AdministratorDAOInterface adminDAOInterface = new AdministratorDAOImpl();
 
     public AdministratorDBConnection() {
         super();
         setCompleteDBConnection ();
+        loadAdminsFromDB ();
     }
     void loadAdminsFromDB(){
         try {
-            AdministratorDAOInterface adminDAOInterface = new AdministratorDAOImpl ();
             Administrator admin = new Administrator ();
             long id;
             String username, password;
@@ -24,7 +24,7 @@ public class AdministratorDBConnection extends DBConnectionHandler{
                 admin.setUsername (username);
                 password = result.getString (4);
                 admin.setPassword (password);
-                adminDAOInterface.getHashMap ().put ( admin.Name, admin);
+                adminDAOInterface.getAdministrators ().put(admin.Name, admin);
             }
         }catch(SQLException sqle){
             sqle.printStackTrace ();
