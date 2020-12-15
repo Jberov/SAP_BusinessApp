@@ -6,6 +6,7 @@ public class AdministratorDBConnection extends DBConnectionHandler{
 
     public AdministratorDBConnection() {
         super();
+        setCompleteDBConnection ();
     }
     void setCompleteDBConnection(){
         connection = setDBConnection ();
