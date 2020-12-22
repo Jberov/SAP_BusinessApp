@@ -1,8 +1,10 @@
+import Entity.Administrator;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
- class Login {
+/* class Login {
     Scanner scan = new Scanner (System.in);
     public String getUsername() {
         return username;
@@ -66,3 +68,4 @@ import java.util.Scanner;
         isTradeRep = false;
     }
 }
+*/
