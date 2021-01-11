@@ -70,7 +70,6 @@ public class AdminMainPanel extends JFrame{
                 }
             });
             setVisible (false);
-            //TODO Add action
         });
 
     }
