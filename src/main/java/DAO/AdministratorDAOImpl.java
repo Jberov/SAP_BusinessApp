@@ -2,6 +2,7 @@ package DAO;
 
 import DatabaseUtility.DBConnectionHandler;
 import Entity.Administrator;
+import org.apache.commons.codec.digest.DigestUtils;
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +26,7 @@ public class AdministratorDAOImpl implements AdministratorDAOInterface {
                     ResultSet rs = statement.executeQuery ();
                 if (!rs.next ()) {
                     admin.setUsername (username);
-                    admin.setPassword (password);
+                    admin.setPassword (hashPassword (password));
                     admin.setName (name);
                     String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
                     Pattern pattern = Pattern.compile (regex);
@@ -119,7 +120,7 @@ public class AdministratorDAOImpl implements AdministratorDAOInterface {
                     return false;
                 }
                 result = database.setDBConnection ().prepareStatement ("update administrators set Password =? where Username=?");
-                result.setString (1, newPassword);
+                result.setString (1, hashPassword (newPassword));
                 result.setString (2, username);
                 if(result.execute ()) {
                     JOptionPane.showMessageDialog (new JPanel (), "Update successful");
@@ -184,5 +185,8 @@ public class AdministratorDAOImpl implements AdministratorDAOInterface {
         }
         return true;
     }
+    private String hashPassword(String password){
+        return DigestUtils.sha256Hex(password);
     }
+}
 

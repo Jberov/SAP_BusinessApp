@@ -14,7 +14,6 @@ public class DeleteAdmin extends JFrame{
     private JTextField username;
     private JButton deleteProductButton;
     private JButton backButton;
-    private JTextPane textPane1;
 
     public DeleteAdmin() {
         setVisible (true);
@@ -35,7 +34,6 @@ public class DeleteAdmin extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 RemoveAdmin delete = new RemoveAdmin (new AdministratorDAOImpl ());
                 if(delete.execute (username.getText ())){
-                    JOptionPane.showMessageDialog (new JPanel (), "Admin has been deleted");
                     setVisible (false);
                     AdminMainPanel adminMainPanel = new AdminMainPanel ();
                     adminMainPanel.addWindowListener (new WindowAdapter () {

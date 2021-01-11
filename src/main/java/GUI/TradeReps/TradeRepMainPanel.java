@@ -47,6 +47,7 @@ public class TradeRepMainPanel extends JFrame{
         });
         analyzeByTrader.addActionListener (e -> {
             TwitterForm twitterForm = new TwitterForm ();
+            setVisible (false);
             twitterForm.addWindowListener (new WindowAdapter () {
                 @Override
                 public void windowClosing(WindowEvent e) {

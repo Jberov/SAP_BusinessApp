@@ -1,6 +1,7 @@
 package DAO;
 
 import DatabaseUtility.DBConnectionHandler;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.swing.*;
 import java.sql.PreparedStatement;
@@ -45,7 +46,7 @@ import java.util.InputMismatchException;
                 return false;
             }
             statement = database.setDBConnection ().prepareStatement ("select Password from administrators where Password=?");
-            statement.setString (1, getPassword ());
+            statement.setString (1, DigestUtils.sha256Hex(getPassword ()));
             rs = statement.executeQuery ();
 
             if(!rs.next ()){
@@ -78,7 +79,7 @@ import java.util.InputMismatchException;
                 return false;
             }
             statement = database.setDBConnection ().prepareStatement ("select Password from tradereps where Password=?");
-            statement.setString (1, getPassword ());
+            statement.setString (1, DigestUtils.sha256Hex(getPassword ()));
             rs = statement.executeQuery ();
             if(!rs.next ()){
                 JOptionPane.showMessageDialog (message, "Wrong password");

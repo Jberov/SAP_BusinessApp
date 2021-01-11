@@ -2,6 +2,8 @@ package DAO;
 
 import DatabaseUtility.DBConnectionHandler;
 import Entity.TradeRep;
+import org.apache.commons.codec.digest.DigestUtils;
+
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,7 +60,7 @@ public class TraderDAOImpl implements TraderDAOInterface{
                 return false;
             }
             result = database.setDBConnection ().prepareStatement ("update tradereps set Password =? where Username=?");
-            result.setString (1, newPassword);
+            result.setString (1, DigestUtils.sha256Hex(newPassword));
             result.setString (2, username);
             if(result.execute ()) {
                 JOptionPane.showMessageDialog (new JPanel (), "Update successful");
@@ -168,6 +170,7 @@ public class TraderDAOImpl implements TraderDAOInterface{
                 result.setString (1, password);
                 ResultSet rs = result.executeQuery ();
                 if(!rs.next ()){
+                    password = DigestUtils.sha256Hex(password);
                     temp.setPassword (password);
                     return true;
                 }
@@ -175,6 +178,7 @@ public class TraderDAOImpl implements TraderDAOInterface{
                     JOptionPane.showMessageDialog (new JPanel (), "Password is already taken");
                     return false;
                 } else {
+                    password = DigestUtils.sha256Hex(password);
                     temp.setPassword (password);
                     return true;
                 }

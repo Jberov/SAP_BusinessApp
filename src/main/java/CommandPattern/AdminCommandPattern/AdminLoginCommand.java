@@ -2,7 +2,7 @@ package CommandPattern.AdminCommandPattern;
 
 import CommandPattern.LoginCommand;
 import DAO.LoginDAO;
-
+import org.apache.commons.codec.digest.DigestUtils;
 
 
 public class AdminLoginCommand implements LoginCommand {

@@ -1,5 +1,4 @@
 
-import GUI.Admin.Analysis.AnalysisByTimetGUI;
 import GUI.Login.roleChooser;
 
 import java.awt.event.WindowAdapter;
